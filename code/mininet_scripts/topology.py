@@ -14,19 +14,26 @@ class Environment(object):
         "Create a network."
         self.net = Mininet(controller=RemoteController, link=TCLink)
         info("*** Starting controller\n")
+
         c1 = self.net.addController( 'c1', controller=RemoteController) #Controller
         c1.start()
-        info("*** Adding hosts and switches\n")
-        self.h1 = self.net.addHost('h1', mac ='00:00:00:00:00:01', ip= '10.0.0.1')
+        
+        info("*** Adding hosts\n")
+        self.h1 = self.net.addHost('h1', mac ='00:00:00:00:00:01', ip= '10.0.0.1')  #host malware
         self.h2 = self.net.addHost('h2', mac ='00:00:00:00:00:02', ip= '10.0.0.2')
-        self.cpe1 = self.net.addSwitch('s1', cls=OVSKernelSwitch)
-        self.cpe2 = self.net.addSwitch('s2', cls=OVSKernelSwitch)
-        self.core1 = self.net.addSwitch('s3', cls=OVSKernelSwitch)
+        self.h3 = self.net.addHost('h3', mac ='00:00:00:00:00:03', ip= '10.0.0.3')
+
+        info("*** Adding switches\n")
+        self.s1, self.s2, self.s3, self.s4 = [ self.net.addSwitch(s, failMode="standalone") for s in ('s1', 's2', 's3', 's4')]
+
         info("*** Adding links\n")  
-        self.net.addLink(self.h1, self.cpe1, bw=6, delay='0.0025ms')
-        self.path1 = self.net.addLink(self.cpe1, self.core1, bw=3, delay='25ms')
-        self.net.addLink(self.core1, self.cpe2, bw=3, delay='25ms')
-        self.net.addLink(self.cpe2, self.h2, bw=6, delay='0.0025ms')       
+        for h, s in [(self.h1, self.s1), (self.h2,self.s2), (self.h3, self.s4)]:
+            self.net.addLink(h, s)
+        
+        self.net.addLink(self.s1, self.s3)
+        self.net.addLink(self.s2, self.s3)
+        self.net.addLink(self.s3, self.s4)
+
         info("*** Starting network\n")
         self.net.build()
         self.net.start()
