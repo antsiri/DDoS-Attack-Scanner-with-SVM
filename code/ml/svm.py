@@ -12,7 +12,7 @@ X = dataset.drop('Class', axis=1)   #splitting into features and label
 y = dataset['Class']
 
 # Splitting del datasetn in train_set e test_set
-X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=0)
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.15, random_state=0)
 
 # Scaling
 scaler = StandardScaler()
