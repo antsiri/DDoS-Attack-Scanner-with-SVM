@@ -6,7 +6,7 @@ from sklearn.svm import SVC
 from sklearn.metrics import confusion_matrix, classification_report
 import joblib
 
-dataset = pd.read_csv('data/dataset.csv')   #import dataset
+dataset = pd.read_csv('/home/antonio/Desktop/NCI/code/data/dataset.csv')   #import dataset
 
 X = dataset.drop('Class', axis=1)   #splitting into features and label
 y = dataset['Class']
@@ -36,7 +36,7 @@ print(cm)
 print(cr)
 
 # Exprot model
-filename = 'model.sav'
+filename = '/home/antonio/Desktop/NCI/code/ml/model.sav'
 joblib.dump(classifier, filename)
 print('Model exported!')
 

@@ -4,15 +4,14 @@ from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import StandardScaler
 from sklearn.svm import SVC
 from sklearn.metrics import confusion_matrix, classification_report
-import joblib, warnings
+import joblib
+import warning
 
-warnings.filterwarnings("ignore", category=DeprecationWarning)
-warnings.warn = None
-
-filename = 'classifier.sav'
+filename = '/home/antonio/Desktop/NCI/code/ml/model.sav'
 classifier = joblib.load(filename)
-dt_realtime = pd.read_csv('realtime.csv')
+dt_realtime = pd.read_csv('/home/antonio/Desktop/NCI/code/tracker/rt_data.csv')
+dt_realtime.fillna(0, inplace=True)
 result = classifier.predict(dt_realtime)
 
-with open('.result', 'w') as f:
+with open('/home/antonio/Desktop/NCI/code/tracker/.result', 'w') as f:
     f.write(str(result[0]))
