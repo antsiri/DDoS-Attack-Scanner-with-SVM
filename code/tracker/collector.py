@@ -74,7 +74,7 @@ def main():
                 run_command(f"sudo ovs-ofctl add-flow s{j} \"{default_flow.strip()}\"")
                 run_command(f"killall hping3")
                 print(default_flow)
-
+        time.sleep(3)
 
 if __name__ == "__main__":
     os.makedirs("data", exist_ok=True)
