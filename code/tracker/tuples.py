@@ -1,6 +1,21 @@
 import numpy as np
 import csv
 
+#Flow table information extracted
+#NXST_FLOWreply(xid = 0 × 4) : cookie = 0 × 0,
+#duration = 21.098s,
+#table = 0,
+#n_packets = 1,
+#n_bytes = 42,
+#idle_age = 21, #
+#priority = 65535, tcp,
+#in_port = 1,
+#dl_src = 00 : 00 : 00 : 00 : 00 : 01,
+#dl_dst = 00 : 00 : 00 : 00 : 00 : 02,
+#nw_src = 95.141.141.242,
+#tp_src=3786,
+#tp_dst=0
+
 # SDFP
 packets_csv = np.genfromtxt('packets.csv', delimiter=",")
 dt_packets = packets_csv[:]
