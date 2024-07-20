@@ -87,7 +87,7 @@ def main():
                 default_flow = run_command(f"sudo ovs-ofctl dump-flows s{j} | tail -n 1")
                 run_command(f"sudo ovs-ofctl del-flows s{j}")
                 run_command(f"sudo ovs-ofctl add-flow s{j} \"{default_flow.strip()}\"")
-                run_command(f"killall hping3")
+                #run_command(f"killall hping3")
                 print(default_flow)
         time.sleep(3)
 
