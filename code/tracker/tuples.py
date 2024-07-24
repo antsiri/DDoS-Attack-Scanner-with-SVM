@@ -56,7 +56,7 @@ rfip = abs(float(n_ip - row_count_non_int)/n_ip)
 headers = ['SSIP', 'SDFP', 'SDFB', 'SFE', 'RFIP']
 features = [ssip, sdfp, sdfb, sfe, rfip]
 
-with open('/home/antonio/Desktop/NCI/code/tracker/rt_data.csv', 'w') as f:
+with open('rt_data.csv', 'w') as f:
     cursor = csv.writer(f, delimiter=',')
     cursor.writerow(headers)
     cursor.writerow(features)
