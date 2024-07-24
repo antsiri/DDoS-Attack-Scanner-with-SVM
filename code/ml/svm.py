@@ -36,7 +36,7 @@ print(cm)
 print(cr)
 
 # Exprot model
-filename = '/home/antonio/Desktop/NCI/code/ml/model.sav'
+filename = 'model.sav'
 joblib.dump(classifier, filename)
 print('Model exported!')
 
