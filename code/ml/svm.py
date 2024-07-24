@@ -6,12 +6,12 @@ from sklearn.svm import SVC
 from sklearn.metrics import confusion_matrix, classification_report
 import joblib
 
-dataset = pd.read_csv('/home/antonio/Desktop/NCI/code/data/dataset.csv')   #import dataset
+dataset = pd.read_csv('/data/dataset.csv')   #import dataset
 
 X = dataset.drop('Class', axis=1)   #splitting into features and label
 y = dataset['Class']
 
-# Splitting del datasetn in train_set e test_set
+# Splitting del dataset in train_set e test_set
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.15, random_state=0)
 
 # Scaling
